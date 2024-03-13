@@ -1,0 +1,145 @@
+# --------------- FP1 - F01 ---------------- #
+# --- Xzavier Moosomin --- #
+# ---- 2024-03-12 ---- #
+# --- List Refresher --- #
+
+# ---- Imports ---- #
+import time
+
+# ---- Lists/Arrays ---- #
+dev_list = [ 'Book', 'Sword', 'Penny', 'Peso', 'Bottle', 'Canned Spaghetti Bolognese', 'Spiked Bat', 'Cat' ]
+
+user_list = [ ]
+
+# ---- Functions ---- #
+
+def print_dev_list():
+    print("Printing Developer Items.")
+    time.sleep(2)
+    for item in dev_list:
+        print(item)
+        time.sleep(0.5)
+        
+    print("That's all the developer thought of. Well done.")
+    
+def user_created_list():
+    print("What item do you wanted to add?")
+    print("Maximum of 5.")
+    
+    while len(user_list) < 5:
+        add_item = input(">")
+        user_list.append(add_item)
+        print("You added", add_item)
+        
+    print("Printing your items:")    
+    for item in user_list:
+        print(item)
+        time.sleep(0.5)
+
+# ---- Variables ---- #
+user_actions = 1
+
+choice_2 = 1
+
+# ---- Code ---- #
+
+print_dev_list()
+
+user_created_list()
+while user_actions == 1:
+    print("What do you want to do to your list?")
+    print("1 - Remove an Item\n2 - Add an Item\n3 - View the List\n4 - Quit\n5- Delete List")
+    user_choice = input(">")
+
+    if user_choice == "1" or user_choice.lower() == "remove an item":
+        print(user_list)
+        # example list [1, 2, 3, 4, 5 (linear)
+        # 1 is 0, 2 is 1, 3 is 2, 4 is 3, 5 is 4. This is for dev ease of access.
+        print("What item do you want to remove?")
+        removed_choice = input(">")
+        
+        user_list.remove(removed_choice)
+            
+        print("You removed", removed_choice)
+        print(user_list)
+            
+    elif user_choice == "2" or user_choice.lower() == "add an item":
+        add_choice = input("What do you want to add?\n>")
+        user_list.append(add_choice)
+        
+    elif user_choice == "3" or user_choice.lower() == "View the List":
+        print(user_list)
+    
+    elif user_choice == "4" or user_choice.lower() == "Quit":
+        user_response = input("Are you sure you want to quit?\n1 - Yes\n2 - No\n>")
+        
+        if user_response.lower() == "yes" or user_response == "1":
+            user_actions = 0
+            
+        else:
+            print("Okay, coolio.")
+                  
+    elif user_choice == "5" or user_choice.lower() == "Delete List":
+        dbl_confirm = input("Are you sure?\n1 - Yes\n2 - No\n>")
+            
+        if dbl_confirm.lower() == "yes":
+            user_list.clear()
+            print("Done.")
+                  
+        else:
+            print("Good, that was scary.")
+            
+    else:
+        print("kurger Bing??")
+
+while choice_2 == 1:
+
+    add_together = input("""
+What else do you want to do?
+1 - Print
+2 - Merge
+3 - Split in half
+4 - Insert
+5 - Quit
+>""")
+    
+    if add_together == "1" or add_together.lower() == "print":
+        print(user_list)
+        print("You have", len(user_list), "items in your list.")
+        print("There are", len(dev_list), "items in the Developer's list.")
+        
+    elif add_together == "2" or add_together.lower() == "merge":
+        print("Merging lists:")
+        user_list = dev_list + user_list
+        print("Here it is.")
+        print(user_list)
+        
+    elif add_together == "3" or add_together.lower() == "split in half":
+        print("Which list do you want to split?")
+        split_choice = input("1 - User\n2 - Developer\n>")
+        if split_choice == "1" or split_choice.lower() == "user":
+            midpoint = len(user_list) // 2
+            
+            firsthalf = user_list[:midpoint]
+            secondhalf = user_list[midpoint:]
+            
+            print("The first half is:", firsthalf)
+            time.sleep(2)
+            print("The second half is:", secondhalf)
+            
+        elif split_choice == "2" or split_choice.lower() == "developer":
+            print(dev_list[:3])
+            
+    elif add_together == "4" or add_together.lower() == "Insert":
+        print("Inserting Developer list directly into User list:")
+        user_list.append(dev_list)
+        print(user_list)
+        print("There are", len(user_list), "items in Merged List.")
+    
+    elif add_together == "5" or add_together.lower() == "quit":
+        print("Bye bye!")
+        print("*starts mewwing*")
+        choice_2 = 0
+        
+    else:
+        print("Huh?")
